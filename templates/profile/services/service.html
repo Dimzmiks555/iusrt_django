@@ -1,0 +1,66 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+        <main>
+            <div class="container">   
+                <section class="charge_page" id="charge_page">
+                    <div class="page_header">
+                        <div>
+                            <h2>Пакет услуг № {{id}}</h2>
+                            <h3>Работники</h3>
+                        </div>
+                        <div>
+                            <p>24.01.2023</p>
+                            <span>Оплачено</span>
+                        </div>
+                    </div>
+                    <div class="price">
+                        12 654,32 руб. к оплате
+                    </div>
+                    <div class="comment_block">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam odit architecto a quis asperiores provident maiores possimus qui esse sunt, blanditiis eos ratione vel maxime adipisci sapiente ea eaque tempora. Porro illum dolores quos at magnam voluptatem dicta, consectetur vel, quae, architecto illo repellendus nisi suscipit modi? Error, quisquam ipsam!</p>
+                    </div>
+                    <div class="documents_block">
+                        <h2>Документы</h2>
+                        <div class="documents_list">
+                            <div class="document">
+                                <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                <p>Квитанция на оплату</p>
+                                <a class="primary_button">Скачать</a>
+                            </div>
+                            <div class="document">
+                                <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                <p>Квитанция № 2423423 на оплату</p>
+                                <a class="primary_button">Скачать</a>
+                            </div>
+                            <div class="document">
+                                <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                <p>Квитанция на оплату Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat maiores </p>
+                                <a class="primary_button">Скачать</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoices_block">
+                        <h2>Подтверждение оплаты</h2>
+                        <p>Чтобы подтвердить оплату, прикрепите, пожалуйста платежные документы</p>
+                        <input type="file" multiple>
+                        <button class="primary_button">Загрузить</button>
+                    </div>
+                    <div class="payments_block">
+                        <h2>Приклепленные чеки</h2>
+                        <div class="documents_list">
+                            <div class="document">
+                                <iconify-icon icon="mdi:file-check-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                <a href="#">Чек об оплате</a>
+                            </div>
+                            <div class="document">
+                                <iconify-icon icon="mdi:file-check-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                <a href="#">ПП</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+{% endblock content %}

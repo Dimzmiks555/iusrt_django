@@ -1,0 +1,93 @@
+
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="container">   
+            <section class="hero" id="hero">
+                <div>
+                    <h1>Доверьте <span>учёт</span> своего бизнеса нам!</h1>
+                    <ul>
+                        <li>📁 Бухгалтерский учет</li>
+                        <li>💵 Налоговый учет</li>
+                        <li>✒️ Кадровый учет</li>
+                        <li>📜 Всё прочее</li>
+                    </ul>
+                    <a class="hero_button" href="/auth">Войти</a>
+                </div>
+                <div>
+                    <img src="{% static 'assets/hero.png' %}">
+                </div>
+            </section>
+            <section class="services" id="services">
+                <h2>Услуги</h2>
+                <div class="services__block">
+                    <div class="service">
+                        <iconify-icon icon="material-symbols:calculate" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Бухгалтерская и налоговая отчетность</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="material-symbols:change-circle" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Обработка документов в программе 1С</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="fluent:document-data-32-filled" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Сдача отчетности во все органы</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="material-symbols:account-tree" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Анализ и учет первичных документов</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="material-symbols:folder-copy" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Бухгалтерский учет ИП, ЕНВД, УСН, ОСН</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="mdi:cloud-discount" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Оптимизация налогообложения</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="mdi:users-group" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Зарплата и кадры</p>
+                    </div>
+                    <div class="service">
+                        <iconify-icon icon="ph:bank-fill" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <p>Работа с банками</p>
+                    </div>
+                </div>
+            </section>
+            <section class="partners"  id="partners">
+                <h2>Партнеры</h2>
+                <div class="partners__block">
+                    <div class="partner"><img src="{% static 'assets/partners/sberbank.jpg' %}"></div>
+                    <div class="partner"><img src="{% static 'assets/partners/vtb.jpg' %}"></div>
+                    <div class="partner"><img src="{% static 'assets/partners/glavbuh.jpg' %}"></div>
+                    <div class="partner"><img src="{% static 'assets/partners/sbis.jfif' %}"></div>
+                </div>
+            </section>
+            <section class="contacts" id="contacts">
+                <h2>Контакты</h2>
+                <div class="contacts__block">
+                    <div>
+                        <img src="{% static 'assets/contacts.jpg' %}">
+                    </div>
+                    <div>
+                        <h3>ИП Холодкова Юлия Михайловна</h3>
+                        <h4>ИНН</h4>
+                        <p>365200092646</p>
+                        <h4>ОГРНИП</h4>
+                        <p>304365211200042</p>
+                        <h4>Адрес</h4>
+                        <p>г. Лиски, ул. Коммунистическая, д. 24</p>
+                        <h4>Телефон</h4>
+                        <p>+7 (920) 464-20-72</p>
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+    </main>
+    
+
+{% endblock content %}

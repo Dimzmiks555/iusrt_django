@@ -1,0 +1,111 @@
+
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+        <main>
+            <div class="container">   
+                <section class="services" id="services">
+                    <div class="charges_wrapper">
+                        <div>
+                            <div class="sidebar">
+                                <div class="type_filter">
+                                    <a>Все</a>
+                                    <a>Пенсионный фонд</a>
+                                    <a>Работники</a>
+                                    <a>Налоги</a>
+                                </div>
+                                <div>
+                                    <div class="date_filter">
+                                        <div class="form_group">
+                                            <label>От</label>
+                                            <input type="date">
+                                        </div>
+                                        <div class="form_group">
+                                            <label>До</label>
+                                            <input type="date">
+                                        </div>
+                                    </div>
+                                    <div class="status_filter">
+                                        <div class="form_group">
+                                            <label>Статус</label>
+                                            <select>
+                                                <option>Требуется оплата</option>
+                                                <option>Оплачено</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button href="#" class="primary_button filter_button">Найти</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="charges__block">
+                            <div class="charge__item">
+                                <div class="charge__item__header">
+                                    <div>
+                                        <h4>Пакет услуг № 123</h4>
+                                        <h5>Работники</h5>
+                                    </div>
+                                    <div>
+                                        <p>24.01.2023</p>
+                                        <span>Оплачено</span>
+                                    </div>
+                                </div>
+                                <div class="charge__item__footer">
+                                    <span>
+                                        12 654,32 руб. 
+                                    </span>
+                                    <div class="charge__item__footer__buttons">
+                                        <a class="primary_button">Подробнее</a>
+                                        <!-- <a class="secondary_button">Прикрепить</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="charge__item">
+                                <div class="charge__item__header">
+                                    <div>
+                                        <h4>Пакет услуг № 123</h4>
+                                        <h5>Работники</h5>
+                                    </div>
+                                    <div>
+                                        <p>24.01.2023</p>
+                                        <span>Оплачено</span>
+                                    </div>
+                                </div>
+                                <div class="charge__item__footer">
+                                    <span>
+                                        12 654,32 руб. 
+                                    </span>
+                                    <div class="charge__item__footer__buttons">
+                                        <a class="primary_button">Подробнее</a>
+                                        <!-- <a class="secondary_button">Прикрепить</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="charge__item">
+                                <div class="charge__item__header">
+                                    <div>
+                                        <h4>Пакет услуг № 123</h4>
+                                        <h5>Работники</h5>
+                                    </div>
+                                    <div>
+                                        <p>24.01.2023</p>
+                                        <span>Оплачено</span>
+                                    </div>
+                                </div>
+                                <div class="charge__item__footer">
+                                    <span>
+                                        12 654,32 руб. 
+                                    </span>
+                                    <div class="charge__item__footer__buttons">
+                                        <a class="primary_button">Подробнее</a>
+                                        <!-- <a class="secondary_button">Прикрепить</a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+{% endblock content %}

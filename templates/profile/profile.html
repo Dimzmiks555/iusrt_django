@@ -1,0 +1,53 @@
+
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+        <main>
+            <div class="container">   
+                <section class="profile" id="profile">
+                   <div class="widgets">
+                        <div class="widget profile_info">
+                            <h3>ИП Сильченко Елена Олеговна</h3>
+                            <p>ИНН 365232150403</p>
+                            <p>ОГРН 306365201400042</p>
+                            <p>Система НО: Патент</p>
+                        </div>
+                        <div class="widget to_be_payed">
+                            <h3>Требуется оплата</h3>
+                            <div class="to_be_payed__block">
+                                <div>
+                                    <h4>Бухгалтеру</h4>
+                                    <span>500,00₽ </span>
+                                    <sub>по 1 пакету услуг</sub>
+                                    <a class="primary_button">Подробнее</a>
+                                </div>
+                                <div>
+                                    <h4>Государству</h4>
+                                    <span>12 654,32₽ </span>
+                                    <sub>по 4 квитанциям</sub>
+                                    <a class="primary_button">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget my_documents">
+                            <h3>Мои документы</h3>
+                            <div class="document__block">
+                                <div class="document">
+                                    <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                    <p>Копия ИНН</p>
+                                    <a class="primary_button">Скачать</a>
+                                </div>
+                                <div class="document">
+                                    <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                    <p>Копия ОГРН</p>
+                                    <a class="primary_button">Скачать</a>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </section>
+            </div>
+        </main>
+
+{% endblock content %}

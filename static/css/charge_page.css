@@ -1,0 +1,78 @@
+
+
+@media screen  and (max-width: 800px){
+    #charge_page {
+        padding-top: 140px !important;
+    }
+    .page_header {
+        flex-direction: column;
+    }
+    .page_header span {
+        text-align: center;
+        padding: 10px !important;
+    }
+}
+
+.charge_page h2 {
+    margin-bottom: 10px;
+}
+.charge_page h3 {
+    color: #8b00ff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.page_header {
+    display: flex;
+    justify-content: space-between;
+}   
+
+.page_header p {
+    font-size: 20px;
+}
+.page_header span {
+    display: block;
+    margin-top: 10px;
+    background: #0a0;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.price {
+    margin-top: 20px;
+    font-size: 42px;
+    font-weight: 300;
+}
+
+.documents_block, .invoices_block, .comment_block {
+    margin-top: 30px;
+}
+
+.documents_list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.document {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.document a:hover {
+    text-decoration: underline;
+}
+
+
+.invoices_block input {
+    margin: 20px 0;
+}
+
+
+.invoices_block {
+    margin-bottom: 20px;
+}
