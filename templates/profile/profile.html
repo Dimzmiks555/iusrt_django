@@ -8,10 +8,10 @@
                 <section class="profile" id="profile">
                    <div class="widgets">
                         <div class="widget profile_info">
-                            <h3>ИП Сильченко Елена Олеговна</h3>
-                            <p>ИНН 365232150403</p>
-                            <p>ОГРН 306365201400042</p>
-                            <p>Система НО: Патент</p>
+                            <h3>{{user.organization_type}} {{user.last_name}} {{user.first_name}} {{user.middle_name}}</h3>
+                            <p>ИНН {{user.inn}}</p>
+                            <p>ОГРН {{user.ogrn}}</p>
+                            <p>Система НО: {{user.tax_system.name}}</p>
                         </div>
                         <div class="widget to_be_payed">
                             <h3>Требуется оплата</h3>
@@ -33,16 +33,13 @@
                         <div class="widget my_documents">
                             <h3>Мои документы</h3>
                             <div class="document__block">
-                                <div class="document">
-                                    <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
-                                    <p>Копия ИНН</p>
-                                    <a class="primary_button">Скачать</a>
-                                </div>
-                                <div class="document">
-                                    <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
-                                    <p>Копия ОГРН</p>
-                                    <a class="primary_button">Скачать</a>
-                                </div>
+                                {% for document in user.document_set.all %}
+                                    <div class="document">
+                                        <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                        <p>{{document.name}}</p>
+                                        <a class="primary_button" target="_blank" href="{{document.file.url}}" download>Скачать</a>
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
                    </div>

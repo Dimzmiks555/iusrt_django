@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "dictionary",
     "charges",
+    "accounts"
 ]
 
 MIDDLEWARE = [
@@ -123,8 +124,11 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    "/var/www/static/",
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -134,3 +138,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MAX_UPLOAD_SIZE = "5242880"
 
 AUTH_USER_MODEL = 'dictionary.Organization' # new
+
+
+LOGIN_REDIRECT_URL =  '/profile/'

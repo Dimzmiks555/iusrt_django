@@ -25,6 +25,8 @@ class TaxSystem(models.Model):
         verbose_name = 'Система налогообложения'
         verbose_name_plural = 'Системы налогообложения'
 
+    def __str__(self):
+        return "Система налогообложения " + self.name
 
 
 class Organization(AbstractUser):
@@ -36,7 +38,7 @@ class Organization(AbstractUser):
         verbose_name="Организационно-правовая форма",
     )
 
-    middle_name = models.CharField("Отчество", max_length=255)
+    middle_name = models.CharField("Отчество", max_length=255, blank=True)
     inn = models.CharField("ИНН", max_length=255)
     ogrn = models.CharField("ОГРН", max_length=255)
     tax_system = models.ForeignKey(TaxSystem, on_delete=models.PROTECT, verbose_name="Система налогообложения", default=None, blank=True, null=True)

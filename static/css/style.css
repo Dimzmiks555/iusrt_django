@@ -408,6 +408,13 @@ section h2 {
 
 .auth form input {
     width: 260px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.auth form label {
+    display: block;
+    margin-bottom: 10px;
 }
 .auth form button {
     margin-top: 10px;

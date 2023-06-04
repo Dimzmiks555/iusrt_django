@@ -1,22 +1,26 @@
 
-{% extends 'components/base.html' %}
+{% extends '../components/base.html' %}
 {% load static %}
 
 {% block content %}
     <main>
         <div class="container">   
             <section class="auth" id="auth">
-                <form>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
                     <h3>Войти</h3>
-                    <div class="form_group">
+                    {% comment %} <div class="form_group">
                         <label>Логин</label>
                         <input>
                     </div >
                     <div class="form_group">
                         <label>Пароль</label>
                         <input type="password">
-                    </div>
-                    <button class="primary_button">Войти</button>
+                    </div> {% endcomment %}
+                    {{ form }}
+                    <button class="primary_button" type="submit">Войти</button>
                 </form>
                 <!-- <form>
                     <h3>Заявка на регистрацию</h3>

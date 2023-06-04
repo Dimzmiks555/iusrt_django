@@ -17,13 +17,23 @@
                 </div>
             </div>
             <div class="menu">
-                <ul>
-                    <li><a href="/#hero">Главная</a></li>
-                    <li><a href="/#services">Услуги</a></li>
-                    <li><a href="/#contacts">Контакты</a></li>
-                    <li><a href="/#partners">Партнеры</a></li>
-                    <li><a class="account_button" href="/auth">Личный кабинет</a></li>
-                </ul>
+                {% if user.is_authenticated %}
+                    <ul>
+                        <li><a href="/#hero">Главная</a></li>
+                        <li><a href="/profile">Профиль</a></li>
+                        <li><a href="/profile/receipts">Квитанции</a></li>
+                        <li><a href="/profile/services">Услуги</a></li>
+                        <li><a class="logout_button" href="/logout">Выйти</a></li>
+                    </ul>
+                {% else %}
+                    <ul>
+                        <li><a href="/#hero">Главная</a></li>
+                        <li><a href="/#services">Услуги</a></li>
+                        <li><a href="/#contacts">Контакты</a></li>
+                        <li><a href="/#partners">Партнеры</a></li>
+                        <li><a class="account_button" href="/login">Личный кабинет</a></li>
+                    </ul>
+                {% endif %}
             </div>
             <div class="burger">
                 <iconify-icon icon="solar:hamburger-menu-linear" width="40" height="40"></iconify-icon>
