@@ -9,21 +9,24 @@ from .models import Organization, TaxSystem, Document
 print(list(set([f.name for f in Organization._meta.fields])))
 
 UserAdmin.fieldsets = (
-    ('Данные', {'fields': ('email',"organization_type", 'first_name', 'last_name', 'middle_name', 'phone', "inn","ogrn", "tax_system",)}),  
-    
-    ('Регистрационные данные',{'fields': ('username', 'password')}),                
+    ('Данные', {'fields': ('email', "organization_type", 'first_name',
+     'last_name', 'middle_name', 'phone', "inn", "ogrn", "tax_system",)}),
+
+    ('Регистрационные данные', {'fields': ('username', 'password')}),
     ('Права', {'fields': (
-        'is_active', 
-        'is_staff', 
+        'is_active',
+        'is_staff',
         'is_superuser',
-        # 'groups', 
+        # 'groups',
         # 'user_permissions'
-    )}),    
+    )}),
 )
+
 
 class ProfileInline(admin.StackedInline):
     model = Document
     extra = 1
+
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -33,10 +36,11 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email',"organization_type", 'first_name', 'last_name', 'middle_name', 'password1', 'password2', 'phone', 'inn', "ogrn", "tax_system")}
-        ),
+            'fields': ('username', 'email', "organization_type", 'first_name', 'last_name', 'middle_name', 'password1', 'password2', 'phone', 'inn', "ogrn", "tax_system")}
+         ),
     )
     inlines = [ProfileInline]
+
 
 admin.site.register(Organization, CustomUserAdmin)
 admin.site.register(TaxSystem)

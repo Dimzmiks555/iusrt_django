@@ -12,6 +12,7 @@ STATUS_CHOICES = (
     (REQUIRE, "Требуется оплата"),
 )
 
+
 class Type(models.Model):
     name = models.CharField('Наименование типа', max_length=100)
 
@@ -20,14 +21,10 @@ class Type(models.Model):
         verbose_name_plural = 'Тип'
 
 
-class Document(models.Model):
-    file = models.FileField('Файл')
-
 class PackageOfReceipts(models.Model):
-    documents = models.ManyToManyField(Document)
     organization = models.ForeignKey(Organization, on_delete=models.PROTECT)
     type = models.ForeignKey(Type, on_delete=models.PROTECT)
-    status = models.CharField(max_length=100,choices=STATUS_CHOICES)
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES)
     created_at = models.DateField('Дата создания', default=now)
     must_be_payed_at = models.DateField('Должно быть оплачено до', default=now)
     summ = models.DecimalField('Сумма', max_digits=10, decimal_places=2)
@@ -38,11 +35,16 @@ class PackageOfReceipts(models.Model):
         verbose_name_plural = 'Пакеты квитанций'
 
 
+class DocumentOfPackageOfReceipts(models.Model):
+    file = models.FileField('Файл')
+    package_of_receipts = models.ForeignKey(
+        PackageOfReceipts, on_delete=models.PROTECT)
+
+
 class PackageOfServices(models.Model):
-    documents = models.ManyToManyField(Document)
     organization = models.ForeignKey(Organization, on_delete=models.PROTECT)
     type = models.ForeignKey(Type, on_delete=models.PROTECT)
-    status = models.CharField(max_length=100,choices=STATUS_CHOICES)
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES)
     created_at = models.DateField('Дата создания', default=now)
     must_be_payed_at = models.DateField('Должно быть оплачено до', default=now)
     summ = models.DecimalField('Сумма', max_digits=10, decimal_places=2)
@@ -51,3 +53,9 @@ class PackageOfServices(models.Model):
     class Meta:
         verbose_name = 'Пакет услуг'
         verbose_name_plural = 'Пакеты услуг'
+
+
+class DocumentOfPackageOfServices(models.Model):
+    file = models.FileField('Файл')
+    package_of_services = models.ForeignKey(
+        PackageOfServices, on_delete=models.PROTECT)
