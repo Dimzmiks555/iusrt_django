@@ -40,69 +40,30 @@
                             </div>
                         </div>
                         <div class="charges__block">
+                            {% for service in services %}
                             <div class="charge__item">
                                 <div class="charge__item__header">
                                     <div>
-                                        <h4>Пакет услуг № 123</h4>
-                                        <h5>Работники</h5>
+                                        <h4>Пакет услуг № {{service.pk}}</h4>
+                                        <h5>{{service.type}}</h5>
                                     </div>
                                     <div>
                                         <p>24.01.2023</p>
-                                        <span>Оплачено</span>
+                                        <span class="{% if service.status == 'Требуется оплата' %}red_status{% else %}green_status{% endif %}">{{service.status}}</span>
                                     </div>
                                 </div>
                                 <div class="charge__item__footer">
                                     <span>
-                                        12 654,32 руб. 
+                                        {{service.summ}} руб. 
                                     </span>
                                     <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
+                                        <a class="primary_button" href="/profile/services/{{service.pk}}">Подробнее</a>
                                         <!-- <a class="secondary_button">Прикрепить</a> -->
                                     </div>
                                 </div>
                             </div>
-                            <div class="charge__item">
-                                <div class="charge__item__header">
-                                    <div>
-                                        <h4>Пакет услуг № 123</h4>
-                                        <h5>Работники</h5>
-                                    </div>
-                                    <div>
-                                        <p>24.01.2023</p>
-                                        <span>Оплачено</span>
-                                    </div>
-                                </div>
-                                <div class="charge__item__footer">
-                                    <span>
-                                        12 654,32 руб. 
-                                    </span>
-                                    <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
-                                        <!-- <a class="secondary_button">Прикрепить</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="charge__item">
-                                <div class="charge__item__header">
-                                    <div>
-                                        <h4>Пакет услуг № 123</h4>
-                                        <h5>Работники</h5>
-                                    </div>
-                                    <div>
-                                        <p>24.01.2023</p>
-                                        <span>Оплачено</span>
-                                    </div>
-                                </div>
-                                <div class="charge__item__footer">
-                                    <span>
-                                        12 654,32 руб. 
-                                    </span>
-                                    <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
-                                        <!-- <a class="secondary_button">Прикрепить</a> -->
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+                            
                         </div>
                     </div>
                 </section>

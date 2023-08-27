@@ -8,37 +8,29 @@
                     <div class="page_header">
                         <div>
                             <h2>Пакет услуг № {{id}}</h2>
-                            <h3>Работники</h3>
+                            <h3>{{service.type}}</h3>
                         </div>
                         <div>
-                            <p>24.01.2023</p>
-                            <span>Оплачено</span>
+                            <p>{{service.created_at}}</p>
+                            <span class="{% if service.status == 'Требуется оплата'%}red_status{% else %}green_status{% endif %}">{{service.status}}</span>
                         </div>
                     </div>
                     <div class="price">
-                        12 654,32 руб. к оплате
+                        {{service.summ}} руб. к оплате
                     </div>
                     <div class="comment_block">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam odit architecto a quis asperiores provident maiores possimus qui esse sunt, blanditiis eos ratione vel maxime adipisci sapiente ea eaque tempora. Porro illum dolores quos at magnam voluptatem dicta, consectetur vel, quae, architecto illo repellendus nisi suscipit modi? Error, quisquam ipsam!</p>
+                        <p>{{service.description}}</p>
                     </div>
                     <div class="documents_block">
                         <h2>Документы</h2>
                         <div class="documents_list">
-                            <div class="document">
-                                <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
-                                <p>Квитанция на оплату</p>
-                                <a class="primary_button">Скачать</a>
-                            </div>
-                            <div class="document">
-                                <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
-                                <p>Квитанция № 2423423 на оплату</p>
-                                <a class="primary_button">Скачать</a>
-                            </div>
-                            <div class="document">
-                                <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
-                                <p>Квитанция на оплату Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat maiores </p>
-                                <a class="primary_button">Скачать</a>
-                            </div>
+                            {% for document in service.documentofpackageofservices_set.all %}
+                                <div class="document">
+                                    <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
+                                    <p>{{document.file.name}}</p>
+                                    <a class="primary_button" href="{{document.file.url}}" target="_blank">Скачать</a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="invoices_block">

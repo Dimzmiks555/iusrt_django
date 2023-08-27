@@ -13,17 +13,31 @@ STATUS_CHOICES = (
 )
 
 
-class Type(models.Model):
+class TypeOfReceipts(models.Model):
     name = models.CharField('Наименование типа', max_length=100)
 
     class Meta:
         verbose_name = 'Тип'
         verbose_name_plural = 'Тип'
 
+    def __str__(self):
+        return f"{self.name}"
+
+
+class TypeOfServices(models.Model):
+    name = models.CharField('Наименование типа', max_length=100)
+
+    class Meta:
+        verbose_name = 'Тип'
+        verbose_name_plural = 'Тип'
+
+    def __str__(self):
+        return f"{self.name}"
+
 
 class PackageOfReceipts(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.PROTECT)
-    type = models.ForeignKey(Type, on_delete=models.PROTECT)
+    type = models.ForeignKey(TypeOfReceipts, on_delete=models.PROTECT)
     status = models.CharField(max_length=100, choices=STATUS_CHOICES)
     created_at = models.DateField('Дата создания', default=now)
     must_be_payed_at = models.DateField('Должно быть оплачено до', default=now)
@@ -43,7 +57,7 @@ class DocumentOfPackageOfReceipts(models.Model):
 
 class PackageOfServices(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.PROTECT)
-    type = models.ForeignKey(Type, on_delete=models.PROTECT)
+    type = models.ForeignKey(TypeOfServices, on_delete=models.PROTECT)
     status = models.CharField(max_length=100, choices=STATUS_CHOICES)
     created_at = models.DateField('Дата создания', default=now)
     must_be_payed_at = models.DateField('Должно быть оплачено до', default=now)

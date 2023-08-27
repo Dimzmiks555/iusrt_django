@@ -28,15 +28,24 @@
 
 .page_header p {
     font-size: 20px;
+    text-align: right;
 }
 .page_header span {
+
     display: block;
     margin-top: 10px;
-    background: #0a0;
     padding: 4px 10px;
     border-radius: 6px;
     color: #fff;
     font-size: 20px;
+}
+.page_header span.green_status {
+
+    background: #0a0;
+}
+.page_header span.red_status {
+
+    background: rgb(170, 0, 0);
 }
 
 .price {

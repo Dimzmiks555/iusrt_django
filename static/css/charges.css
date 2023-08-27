@@ -17,7 +17,7 @@
         grid-template-columns: 250px 1fr !important;
     }
 }
-
+    
 
 @media screen  and (max-width: 800px){
     .sidebar {
@@ -82,11 +82,19 @@
 }
 
 .charge__item__header span {
-    background: #0a0;
     color: #fff;
     display: block;
     border-radius: 4px;
     padding: 3px 6px;
+}
+.charge__item__header span.red_status {
+    background: rgb(170, 0, 0);
+}
+.charge__item__header span.green_status {
+    background: #0a0;
+}
+.charge__item__header p {
+    text-align: right;
 }
 
 .charge__item__footer {
