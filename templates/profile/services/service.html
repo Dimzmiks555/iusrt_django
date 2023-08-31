@@ -36,8 +36,12 @@
                     <div class="invoices_block">
                         <h2>Подтверждение оплаты</h2>
                         <p>Чтобы подтвердить оплату, прикрепите, пожалуйста платежные документы</p>
-                        <input type="file" multiple>
-                        <button class="primary_button">Загрузить</button>
+                        <!-- <input type="file" multiple> -->
+                        <form method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button class="primary_button">Загрузить</button>
+                        </form>
                     </div>
                     <div class="payments_block">
                         <h2>Приклепленные чеки</h2>

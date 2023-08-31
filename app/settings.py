@@ -137,7 +137,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MAX_UPLOAD_SIZE = "5242880"
 
-AUTH_USER_MODEL = 'dictionary.Organization' # new
+AUTH_USER_MODEL = 'dictionary.Organization'  # new
 
 
-LOGIN_REDIRECT_URL =  '/profile/'
+LOGIN_REDIRECT_URL = '/profile/'
+
+APPEND_SLASH = False

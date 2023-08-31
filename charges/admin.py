@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from charges.models import PackageOfReceipts, PackageOfServices, TypeOfReceipts, TypeOfServices, DocumentOfPackageOfServices, DocumentOfPackageOfReceipts
+from charges.models import PackageOfReceipts, PackageOfServices, TypeOfReceipts, TypeOfServices, DocumentOfPackageOfServices, DocumentOfPackageOfReceipts, PaymentOfPackageOfReceipts, PaymentOfPackageOfServices
 
 # Register your models here.
 
@@ -15,12 +15,22 @@ class PackageOfServicesInline(admin.StackedInline):
     extra = 1
 
 
+class PaymentOfReceiptsInline(admin.StackedInline):
+    model = PaymentOfPackageOfReceipts
+    extra = 1
+
+
+class PaymentOfServicesInline(admin.StackedInline):
+    model = PaymentOfPackageOfServices
+    extra = 1
+
+
 class PackageOfReceiptsAdmin(admin.ModelAdmin):
-    inlines = [PackageOfReceiptsInline]
+    inlines = [PackageOfReceiptsInline, PaymentOfReceiptsInline]
 
 
 class PackageOfServicesAdmin(admin.ModelAdmin):
-    inlines = [PackageOfServicesInline]
+    inlines = [PackageOfServicesInline, PaymentOfServicesInline]
 
 
 admin.site.register(TypeOfReceipts)

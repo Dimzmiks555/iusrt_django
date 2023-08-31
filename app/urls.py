@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf import settings # new
-from django.conf.urls.static import static # new
+from django.conf import settings  # new
+from django.conf.urls.static import static  # new
 
 
 from client import views
@@ -28,8 +28,8 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view()),
     path('profile/services/', views.ServicesView.as_view()),
     path('profile/receipts/', views.ReceiptsView.as_view()),
-    path('profile/services/<int:id>', views.ServiceView.as_view()),
-    path('profile/receipts/<int:id>', views.ReceiptView.as_view()),
+    path('profile/services/<int:id>/', views.ServiceView.as_view()),
+    path('profile/receipts/<int:id>/', views.ReceiptView.as_view()),
 ]
 
 
@@ -38,5 +38,6 @@ urlpatterns += [
     path('logout/', authViews.LogoutView.as_view(), name='logout'),
 ]
 
-if settings.DEBUG: # new
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:  # new
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

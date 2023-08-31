@@ -55,6 +55,12 @@ class DocumentOfPackageOfReceipts(models.Model):
         PackageOfReceipts, on_delete=models.PROTECT)
 
 
+class PaymentOfPackageOfReceipts(models.Model):
+    file = models.FileField('Файл')
+    package_of_receipts = models.ForeignKey(
+        PackageOfReceipts, on_delete=models.PROTECT)
+
+
 class PackageOfServices(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.PROTECT)
     type = models.ForeignKey(TypeOfServices, on_delete=models.PROTECT)
@@ -70,6 +76,12 @@ class PackageOfServices(models.Model):
 
 
 class DocumentOfPackageOfServices(models.Model):
+    file = models.FileField('Файл')
+    package_of_services = models.ForeignKey(
+        PackageOfServices, on_delete=models.PROTECT)
+
+
+class PaymentOfPackageOfServices(models.Model):
     file = models.FileField('Файл')
     package_of_services = models.ForeignKey(
         PackageOfServices, on_delete=models.PROTECT)
