@@ -41,90 +41,29 @@
                             </div>
                         </div>
                         <div class="charges__block">
-                            <div class="charge__item">
-                                <div class="charge__item__header">
-                                    <div>
-                                        <h4>Пакет квитанций № 123</h4>
-                                        <h5>Работники</h5>
+                            {% for receipt in receipts %}
+                                <div class="charge__item">
+                                    <div class="charge__item__header">
+                                        <div>
+                                            <h4>Пакет квитанций № {{receipt.pk}}</h4>
+                                            <h5>{{receipt.type}}</h5>
+                                        </div>
+                                        <div>
+                                            <p>24.01.2023</p>
+                                            <span class="{% if receipt.status == 'Требуется оплата' %}red_status{% else %}green_status{% endif %}">{{receipt.status}}</span>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p>24.01.2023</p>
-                                        <span>Оплачено</span>
-                                    </div>
-                                </div>
-                                <div class="charge__item__footer">
-                                    <span>
-                                        12 654,32 руб. 
-                                    </span>
-                                    <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
-                                        <!-- <a class="secondary_button">Прикрепить</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="charge__item">
-                                <div class="charge__item__header">
-                                    <div>
-                                        <h4>Пакет квитанций № 123</h4>
-                                        <h5>Работники</h5>
-                                    </div>
-                                    <div>
-                                        <p>24.01.2023</p>
-                                        <span>Оплачено</span>
+                                    <div class="charge__item__footer">
+                                        <span>
+                                            {{receipt.summ}} руб. 
+                                        </span>
+                                        <div class="charge__item__footer__buttons">
+                                            <a class="primary_button" href="/profile/receipts/{{receipt.pk}}">Подробнее</a>
+                                            <!-- <a class="secondary_button">Прикрепить</a> -->
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="charge__item__footer">
-                                    <span>
-                                        12 654,32 руб. 
-                                    </span>
-                                    <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
-                                        <!-- <a class="secondary_button">Прикрепить</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="charge__item">
-                                <div class="charge__item__header">
-                                    <div>
-                                        <h4>Пакет квитанций № 123</h4>
-                                        <h5>Работники</h5>
-                                    </div>
-                                    <div>
-                                        <p>24.01.2023</p>
-                                        <span>Оплачено</span>
-                                    </div>
-                                </div>
-                                <div class="charge__item__footer">
-                                    <span>
-                                        12 654,32 руб. 
-                                    </span>
-                                    <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
-                                        <!-- <a class="secondary_button">Прикрепить</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="charge__item">
-                                <div class="charge__item__header">
-                                    <div>
-                                        <h4>Пакет квитанций № 123</h4>
-                                        <h5>Работники</h5>
-                                    </div>
-                                    <div>
-                                        <p>24.01.2023</p>
-                                        <span>Оплачено</span>
-                                    </div>
-                                </div>
-                                <div class="charge__item__footer">
-                                    <span>
-                                        12 654,32 руб. 
-                                    </span>
-                                    <div class="charge__item__footer__buttons">
-                                        <a class="primary_button">Подробнее</a>
-                                        <!-- <a class="secondary_button">Прикрепить</a> -->
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>

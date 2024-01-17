@@ -142,4 +142,4 @@ AUTH_USER_MODEL = 'dictionary.Organization'  # new
 
 LOGIN_REDIRECT_URL = '/profile/'
 
-APPEND_SLASH = False
+# APPEND_SLASH = False

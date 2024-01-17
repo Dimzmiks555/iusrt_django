@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from charges.models import PackageOfServices, PaymentOfPackageOfServices
+from charges.models import PackageOfServices, PaymentOfPackageOfServices, PackageOfReceipts
 from dictionary.models import Organization
 from charges.forms import UploadPaymentForm
 
@@ -60,6 +60,12 @@ class ServiceView(TemplateView):
 
 class ReceiptsView(TemplateView):
     template_name = "profile/receipts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['receipts'] = PackageOfReceipts.objects.filter(
+            organization=self.request.user)
+        return context
 
 
 class ReceiptView(TemplateView):
