@@ -23,7 +23,12 @@
                         <li><a href="/profile">Профиль</a></li>
                         <li><a href="/profile/receipts">Квитанции</a></li>
                         <li><a href="/profile/services">Услуги</a></li>
-                        <li><a class="logout_button" href="/logout">Выйти</a></li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="logout_button" type="submit">Выйти</button>
+                            </form>
+                        </li>
                     </ul>
                 {% else %}
                     <ul>

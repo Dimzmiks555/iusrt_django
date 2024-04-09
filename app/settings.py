@@ -141,5 +141,6 @@ AUTH_USER_MODEL = 'dictionary.Organization'  # new
 
 
 LOGIN_REDIRECT_URL = '/profile/'
+LOGOUT_REDIRECT_URL = '/' 
 
 # APPEND_SLASH = False

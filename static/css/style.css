@@ -186,7 +186,7 @@ button {
         text-align: center;
         width: 100%;
     }
-    .menu.active > ul a.account_button, .menu.active > ul a.logout_button{
+    .menu.active > ul a.account_button, .menu.active > ul button.logout_button{
         margin-top: 10px;
     }
 }
@@ -213,11 +213,16 @@ button {
 .menu > ul a.account_button:hover {
     background: #b356ff;
 }
-.menu > ul a.logout_button {
+.menu > ul button.logout_button {
+    cursor: pointer;
     background: #ff003c;
     color: #fff;
+    font-weight: 600;
+    padding: 7px 20px;
+    border-radius: 6px;
+    border: none;
 }
-.menu > ul a.logout_button:hover {
+.menu > ul button.logout_button:hover {
     background: #ff426e;
 }
 

@@ -14,7 +14,11 @@
                         <li>✒️ Кадровый учет</li>
                         <li>📜 Всё прочее</li>
                     </ul>
+                    {% if user.is_authenticated %}
+                    <a class="hero_button" href="/profile">В личный кабинет</a>
+                    {% else %}
                     <a class="hero_button" href="/login">Войти</a>
+                    {% endif %}
                 </div>
                 <div>
                     <img src="{% static 'assets/hero.png' %}">
