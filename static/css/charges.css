@@ -42,6 +42,15 @@
 .type_filter {
     margin-bottom: 30px;
 }
+
+.type_filter a.active {
+    background: #8b00ff;
+    color: #fff;
+}
+.type_filter a.selected {
+    background: #ccc;
+}
+
 .date_filter input {
     width: 100%;
 }
