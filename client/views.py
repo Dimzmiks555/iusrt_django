@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from charges.models import PackageOfServices, PaymentOfPackageOfServices, PackageOfReceipts
+from charges.models import PackageOfServices, PaymentOfPackageOfServices, PackageOfReceipts, TypeOfReceipts, TypeOfServices
 from dictionary.models import Organization
 from charges.forms import UploadPaymentForm
+from django.core.paginator import Paginator
+
 
 
 # Create your views here.
@@ -23,6 +25,9 @@ class ServicesView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['services'] = PackageOfServices.objects.filter(
             organization=self.request.user)
+
+        context['types'] = TypeOfServices.objects.filter()
+
         return context
 
 
@@ -63,8 +68,33 @@ class ReceiptsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['receipts'] = PackageOfReceipts.objects.filter(
-            organization=self.request.user)
+
+        query = {
+            "organization": self.request.user
+        } 
+        params = self.request.GET
+        if params.get("status"):
+            if int(params.get("status")) == 1:
+                query["status"] = "Оплачено"
+            else:
+                query["status"] = "Требуется оплата"
+        
+        if params.get("type"):
+                query["type__id"] = params.get("type")
+
+
+        receipts_list = PackageOfReceipts.objects.filter(**query)
+
+        paginator = Paginator(receipts_list, 2)  
+
+        page_number = self.request.GET.get("page")
+        receipts_obj = paginator.get_page(page_number)
+
+        
+        context['receipts'] = receipts_obj
+
+        context['types'] = TypeOfReceipts.objects.filter()
+
         return context
 
 
@@ -85,6 +115,8 @@ class ReceiptView(TemplateView):
             pk=kwargs['id'])
 
         context['receipt_values'] = PackageOfReceipts._meta.get_fields()
+
+
 
         if self.request.POST:
             form = UploadPaymentForm(self.request.POST, self.request.FILES)

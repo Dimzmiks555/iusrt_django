@@ -11,12 +11,12 @@
                             <div class="sidebar">
                                 <div class="type_filter">
                                     <a>Все</a>
-                                    <a>Пенсионный фонд</a>
-                                    <a>Работники</a>
-                                    <a>Налоги</a>
+                                    {% for type in types %}
+                                    <a>{{type.name}}</a>
+                                    {% endfor %}
                                 </div>
                                 <div>
-                                    <div class="date_filter">
+                                    <!-- <div class="date_filter">
                                         <div class="form_group">
                                             <label>От</label>
                                             <input type="date">
@@ -25,11 +25,12 @@
                                             <label>До</label>
                                             <input type="date">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="status_filter">
                                         <div class="form_group">
                                             <label>Статус</label>
                                             <select>
+                                                <option>Не установлен</option>
                                                 <option>Требуется оплата</option>
                                                 <option>Оплачено</option>
                                             </select>

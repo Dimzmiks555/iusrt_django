@@ -8,10 +8,18 @@
         flex-direction: column;
     }
     .page_header span {
+        margin-left: 0 !important;
+        margin-right: auto;
         text-align: center;
         padding: 10px !important;
     }
+    .page_header p {
+        text-align: left !important;
+        margin-top: 10px;
+    }
+
 }
+
 
 .charge_page h2 {
     margin-bottom: 10px;

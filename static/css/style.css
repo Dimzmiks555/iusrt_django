@@ -564,3 +564,26 @@ footer {
         text-align: center;
     }
 }
+
+
+
+/* PAGINATION */
+
+.step-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+.step-links a {
+    display: flex;
+    gap: 10px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    padding: 4px 10px;
+}
+.step-links a:hover {
+    background: #eee;
+}
