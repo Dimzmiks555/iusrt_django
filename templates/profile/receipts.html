@@ -49,8 +49,12 @@
                                             <h5>{{receipt.type}}</h5>
                                         </div>
                                         <div>
-                                            <p>24.01.2023</p>
-                                            <span class="{% if receipt.status == 'Требуется оплата' %}red_status{% else %}green_status{% endif %}">{{receipt.status}}</span>
+                                            <p>{{receipt.created_at}}</p>
+                                            {% if receipt.status == 'Требуется оплата' %}
+                                                <span class="red_status">{{receipt.status}} до {{receipt.must_be_payed_at}} </span>
+                                            {% else %}
+                                                <span class="green_status">{{receipt.status}}</span>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="charge__item__footer">

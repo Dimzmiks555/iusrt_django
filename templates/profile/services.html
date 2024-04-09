@@ -47,9 +47,14 @@
                                         <h4>Пакет услуг № {{service.pk}}</h4>
                                         <h5>{{service.type}}</h5>
                                     </div>
+                                    
                                     <div>
-                                        <p>24.01.2023</p>
-                                        <span class="{% if service.status == 'Требуется оплата' %}red_status{% else %}green_status{% endif %}">{{service.status}}</span>
+                                        <p>{{service.created_at}}</p>
+                                        {% if service.status == 'Требуется оплата' %}
+                                            <span class="red_status">{{service.status}} до {{service.must_be_payed_at}} </span>
+                                        {% else %}
+                                            <span class="green_status">{{service.status}}</span>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="charge__item__footer">

@@ -17,8 +17,8 @@ class TypeOfReceipts(models.Model):
     name = models.CharField('Наименование типа', max_length=100)
 
     class Meta:
-        verbose_name = 'Тип'
-        verbose_name_plural = 'Тип'
+        verbose_name = 'Тип квитанций'
+        verbose_name_plural = 'Типы квитанций'
 
     def __str__(self):
         return f"{self.name}"
@@ -28,8 +28,8 @@ class TypeOfServices(models.Model):
     name = models.CharField('Наименование типа', max_length=100)
 
     class Meta:
-        verbose_name = 'Тип'
-        verbose_name_plural = 'Тип'
+        verbose_name = 'Тип услуг'
+        verbose_name_plural = 'Типы услуг'
 
     def __str__(self):
         return f"{self.name}"

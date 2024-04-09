@@ -83,7 +83,9 @@
 
 .charge__item__header span {
     color: #fff;
-    display: block;
+    display: flex;
+    margin-left: auto;
+    width: fit-content;
     border-radius: 4px;
     padding: 3px 6px;
 }
