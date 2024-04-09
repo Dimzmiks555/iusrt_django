@@ -70,3 +70,31 @@ class ReceiptsView(TemplateView):
 
 class ReceiptView(TemplateView):
     template_name = "profile/receipts/receipt.html"
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.createPayment()
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        context['receipt'] = PackageOfReceipts.objects.get(
+            pk=kwargs['id'])
+
+        context['receipt_values'] = PackageOfReceipts._meta.get_fields()
+
+        if self.request.POST:
+            form = UploadPaymentForm(self.request.POST, self.request.FILES)
+            if form.is_valid():
+                uploaded_file = self.request.FILES["file"]
+                PaymentOfPackageOfServices.save(file=uploaded_file)
+
+        else:
+            form = UploadPaymentForm()
+
+        context['form'] = UploadPaymentForm()
+
+        return context

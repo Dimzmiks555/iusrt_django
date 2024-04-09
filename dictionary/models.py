@@ -38,6 +38,8 @@ class Organization(AbstractUser):
         verbose_name="Организационно-правовая форма",
     )
 
+
+    title = models.CharField("Наименование организации без ОПФ", max_length=255, blank=True)
     middle_name = models.CharField("Отчество", max_length=255, blank=True)
     inn = models.CharField("ИНН", max_length=255)
     ogrn = models.CharField("ОГРН", max_length=255)
@@ -46,7 +48,7 @@ class Organization(AbstractUser):
     email = models.CharField("Email", max_length=255)
   
     def __str__(self):
-        return self.organization_type + " " + self.first_name + " " + self.last_name + " " + self.middle_name
+        return self.organization_type + " " + self.title
     
     class Meta:
         verbose_name = 'Организация'
