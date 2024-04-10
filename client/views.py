@@ -4,6 +4,7 @@ from charges.models import PackageOfServices, PaymentOfPackageOfServices, Packag
 from dictionary.models import Organization
 from charges.forms import UploadPaymentForm
 from django.core.paginator import Paginator
+from django.db.models import Sum
 
 
 
@@ -18,13 +19,47 @@ class ProfileView(TemplateView):
     template_name = "profile/profile.html"
 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services__summ'] = PackageOfServices.objects.filter(organization=self.request.user, status="Требуется оплата").aggregate(Sum('summ'))
+        context['receipts__summ'] = PackageOfReceipts.objects.filter(organization=self.request.user, status="Требуется оплата").aggregate(Sum('summ'))
+        context['services__count'] = PackageOfServices.objects.filter(organization=self.request.user, status="Требуется оплата").count()
+        context['receipts__count'] = PackageOfReceipts.objects.filter(organization=self.request.user, status="Требуется оплата").count()
+
+
+        return context
+
+
+
 class ServicesView(TemplateView):
     template_name = "profile/services.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['services'] = PackageOfServices.objects.filter(
-            organization=self.request.user)
+
+        query = {
+            "organization": self.request.user
+        } 
+        params = self.request.GET
+        if params.get("status"):
+            if int(params.get("status")) == 1:
+                query["status"] = "Оплачено"
+            else:
+                query["status"] = "Требуется оплата"
+        
+        if params.get("type"):
+                query["type__id"] = params.get("type")
+
+
+        services_list = PackageOfServices.objects.filter(**query)
+
+        paginator = Paginator(services_list, 2)  
+
+        page_number = self.request.GET.get("page")
+        services_obj = paginator.get_page(page_number)
+
+        
+        context['services'] = services_obj
 
         context['types'] = TypeOfServices.objects.filter()
 

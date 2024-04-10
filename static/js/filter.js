@@ -8,7 +8,7 @@ if (filter_button) {
     let status_filter = document.querySelector('.status_filter select') 
     let type = 0, status = status_filter.value;
     
-
+    
 
 
     type_filter.querySelectorAll('a').forEach(link => {
@@ -19,6 +19,10 @@ if (filter_button) {
                 })
                 e.target.classList.add("selected")
         })
+        if (link.classList.contains("active")) {
+            type = +link.dataset.id
+        }
+
     })
 
     status_filter.addEventListener('change', (e) => {

@@ -18,15 +18,27 @@
                             <div class="to_be_payed__block">
                                 <div>
                                     <h4>Бухгалтеру</h4>
-                                    <span>500,00₽ </span>
-                                    <sub>по 1 пакету услуг</sub>
-                                    <a class="primary_button">Подробнее</a>
+                                    
+                                    {% if receipts__summ.summ__sum %}
+                                        <span class="red">{{receipts__summ.summ__sum}} ₽ </span>
+                                        <sub>по {{receipts__count}} пакетам услуг</sub>
+                                        <a href="/profile/receipts?page=1&status=0" class="primary_button">Подробнее</a>
+                                    {% else %}
+                                        <span class="green">0 ₽ </span>
+                                        <sub>Задолженностей нет</sub>
+                                    {% endif %}
                                 </div>
                                 <div>
                                     <h4>Государству</h4>
-                                    <span>12 654,32₽ </span>
-                                    <sub>по 4 квитанциям</sub>
-                                    <a class="primary_button">Подробнее</a>
+                                    {% if services__summ.summ__sum %}
+                                        <span class="red">{{services__summ.summ__sum}} ₽ </span>
+                                        <sub>по {{services__count}} пакетам квитанций</sub>
+                                        <a href="/profile/services?page=1&status=0" class="primary_button">Подробнее</a>
+                                    {% else %}
+                                        <span class="green">0 ₽ </span>
+                                        <sub>Задолженностей нет</sub>
+                                    {% endif %}
+                                    
                                 </div>
                             </div>
                         </div>

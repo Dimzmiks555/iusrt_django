@@ -505,9 +505,15 @@ section h2 {
 .to_be_payed__block span {
     margin-bottom: 4px;
     display: block;
-    color: #d00;
     font-weight: 600;
     font-size: 32px;
+}
+.to_be_payed__block span.red {
+    color: #d00;
+}
+
+.to_be_payed__block span.green {
+    color: #0b0;
 }
 .to_be_payed__block a {
     margin-top: 10px;

@@ -10,9 +10,9 @@
                         <div>
                             <div class="sidebar">
                                 <div class="type_filter">
-                                    <a>Все</a>
+                                    <a {% if request.GET.type == "" or  not request.GET.type%} class="active" {% endif %} data-id="0">Все</a>
                                     {% for type in types %}
-                                    <a>{{type.name}}</a>
+                                    <a {% if request.GET.type == type.id|stringformat:"i" %} class="active" {% endif %} data-id="{{type.id}}">{{type.name}}</a>
                                     {% endfor %}
                                 </div>
                                 <div>
@@ -30,13 +30,13 @@
                                         <div class="form_group">
                                             <label>Статус</label>
                                             <select>
-                                                <option>Не установлен</option>
-                                                <option>Требуется оплата</option>
-                                                <option>Оплачено</option>
+                                                <option value="" >Не установлен</option>
+                                                <option value="0" {% if request.GET.status == "0" %} selected {% endif %}>Требуется оплата</option>
+                                                <option value="1" {% if request.GET.status == "1" %} selected {% endif %}>Оплачено</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <button href="#" class="primary_button filter_button">Найти</button>
+                                    <button id="filter_button" class="primary_button filter_button">Найти</button>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,23 @@
                                 </div>
                             </div>
                             {% endfor %}
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if services.has_previous %}
+                                        <a href="{{ request.path }}?page=1{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo;</a>
+                                        <a href="{{ request.path }}?page={{ services.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Назад</a>
+                                    {% endif %}
                             
+                                    <span class="current">
+                                        Страница {{ services.number }} из {{ services.paginator.num_pages }}.
+                                    </span>
+                            
+                                    {% if services.has_next %}
+                                        <a href="{{ request.path }}?page={{ services.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Вперед</a>
+                                        <a href="{{ request.path }}?page={{ services.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a>
+                                    {% endif %}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </section>
