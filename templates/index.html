@@ -2,11 +2,14 @@
 {% extends 'components/base.html' %}
 {% load static %}
 
+{% block body_class %}home-page{% endblock %}
+{% block extra_head %}<link href="{% static 'css/home.css' %}" rel="stylesheet">{% endblock %}
 {% block content %}
     <main>
         <div class="container">   
             <section class="hero" id="hero">
                 <div>
+                    <p class="hero-label">Бухгалтерские услуги · Лиски</p>
                     <h1>Доверьте <span>учёт</span> своего бизнеса нам!</h1>
                     <ul>
                         <li>📁 Бухгалтерский учет</li>
@@ -28,35 +31,35 @@
                 <h2>Услуги</h2>
                 <div class="services__block">
                     <div class="service">
-                        <iconify-icon icon="material-symbols:calculate" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="material-symbols:calculate" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Бухгалтерская и налоговая отчетность</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="material-symbols:change-circle" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="material-symbols:change-circle" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Обработка документов в программе 1С</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="fluent:document-data-32-filled" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="fluent:document-data-32-filled" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Сдача отчетности во все органы</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="material-symbols:account-tree" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="material-symbols:account-tree" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Анализ и учет первичных документов</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="material-symbols:folder-copy" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="material-symbols:folder-copy" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Бухгалтерский учет ИП, ЕНВД, УСН, ОСН</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="mdi:cloud-discount" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="mdi:cloud-discount" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Оптимизация налогообложения</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="mdi:users-group" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="mdi:users-group" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Зарплата и кадры</p>
                     </div>
                     <div class="service">
-                        <iconify-icon icon="ph:bank-fill" style="color: #8b00ff;" width="80" height="80"></iconify-icon>
+                        <iconify-icon icon="ph:bank-fill" style="color: #8b00ff;" width="48" height="48"></iconify-icon>
                         <p>Работа с банками</p>
                     </div>
                 </div>

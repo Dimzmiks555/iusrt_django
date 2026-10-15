@@ -1,0 +1,7 @@
+{% load static %}
+<div class="file-picker">
+<label class="file-picker-label" for="id_file"><img src="{% static 'icons/upload.svg' %}" alt=""><span><strong>Выберите файл</strong><span class="file-picker-name" aria-live="polite">Чек или платёжное поручение</span></span><span class="file-picker-action">Обзор</span></label>
+<input type="file" name="file" id="id_file" required accept=".pdf,.jpg,.jpeg,.png,.txt" aria-describedby="file-help">
+</div>
+<p id="file-help" class="helptext">PDF, JPG, PNG или TXT, до 10 МБ.</p>
+{{form.file.errors}}

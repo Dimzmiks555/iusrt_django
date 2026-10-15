@@ -1,41 +1,12 @@
-
-{% extends '../components/base.html' %}
+{% extends 'components/base.html' %}
 {% load static %}
-
+{% block body_class %}cabinet-page login-page{% endblock %}
 {% block content %}
-    <main>
-        <div class="container">   
-            <section class="auth" id="auth">
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ next }}">
-
-                    <h3>Войти</h3>
-                    {% comment %} <div class="form_group">
-                        <label>Логин</label>
-                        <input>
-                    </div >
-                    <div class="form_group">
-                        <label>Пароль</label>
-                        <input type="password">
-                    </div> {% endcomment %}
-                    {{ form }}
-                    <button class="primary_button" type="submit">Войти</button>
-                </form>
-                <!-- <form>
-                    <h3>Заявка на регистрацию</h3>
-                    <div class="form_group">
-                        <label>Логин</label>
-                        <input>
-                    </div>
-                    <div class="form_group">
-                        <label>Пароль</label>
-                        <input>
-                    </div>
-                    <button class="primary_button">Подать заявку</button>
-                </form> -->
-            </section>
-        </div>
-    </main>
-    
-{% endblock content %}
+<main><div class="container"><section class="login-layout">
+<div class="login-intro"><p class="eyebrow">Ваш бизнес под контролем</p><h1>Бухгалтерия.<br>Всё под рукой.</h1><p>Услуги, квитанции и документы вашей организации — в одном личном кабинете.</p><div class="login-benefits"><span>01 &nbsp; Следите за начислениями</span><span>02 &nbsp; Скачивайте документы</span><span>03 &nbsp; Прикрепляйте подтверждения оплаты</span></div></div>
+<form method="post" class="login-card">{% csrf_token %}<input type="hidden" name="next" value="{{ next }}"><p class="eyebrow">Личный кабинет</p><h2>Добро пожаловать</h2><p class="muted">Введите данные вашей учётной записи.</p>
+{% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+{% for field in form %}<div class="form_group"><label for="{{field.id_for_label}}">{{field.label}}</label>{{field}}{{field.errors}}</div>{% endfor %}
+<button class="primary_button" type="submit">Войти в кабинет</button><p class="login-help">Нужен доступ? <a href="tel:+79204642072">Свяжитесь с бухгалтером</a></p></form>
+</section></div></main>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% if page.paginator.count %}
+<nav class="pagination-panel" aria-label="Страницы списка">
+<p class="pagination-count">{{page.start_index}}–{{page.end_index}} <span>из {{page.paginator.count}} записей</span></p>
+{% if page.paginator.num_pages > 1 %}
+<div class="pagination-controls">
+{% if page.has_previous %}<a class="page-direction" href="?page={{page.previous_page_number}}{% if filter_query %}&{{filter_query}}{% endif %}" aria-label="Предыдущая страница">Назад</a>{% else %}<span class="page-direction disabled" aria-disabled="true">Назад</span>{% endif %}
+{% for number in page_numbers %}{% if number == page.paginator.ELLIPSIS %}<span class="page-gap">…</span>{% elif number == page.number %}<span class="page-number current" aria-current="page" aria-label="Страница {{number}}">{{number}}</span>{% else %}<a class="page-number" href="?page={{number}}{% if filter_query %}&{{filter_query}}{% endif %}" aria-label="Страница {{number}}">{{number}}</a>{% endif %}{% endfor %}
+{% if page.has_next %}<a class="page-direction" href="?page={{page.next_page_number}}{% if filter_query %}&{{filter_query}}{% endif %}" aria-label="Следующая страница">Далее</a>{% else %}<span class="page-direction disabled" aria-disabled="true">Далее</span>{% endif %}
+</div>
+{% endif %}
+</nav>
+{% endif %}

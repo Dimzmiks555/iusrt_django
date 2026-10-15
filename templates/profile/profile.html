@@ -1,62 +1,11 @@
-
 {% extends 'components/base.html' %}
 {% load static %}
-
-{% block content %}
-        <main>
-            <div class="container">   
-                <section class="profile" id="profile">
-                   <div class="widgets">
-                        <div class="widget profile_info">
-                            <h3>{{user.organization_type}} {{user.title}}</h3>
-                            <p>ИНН {{user.inn}}</p>
-                            <p>ОГРН {{user.ogrn}}</p>
-                            <p>Система НО: {{user.tax_system.name}}</p>
-                        </div>
-                        <div class="widget to_be_payed">
-                            <h3>Требуется оплата</h3>
-                            <div class="to_be_payed__block">
-                                <div>
-                                    <h4>Бухгалтеру</h4>
-                                    
-                                    {% if receipts__summ.summ__sum %}
-                                        <span class="red">{{receipts__summ.summ__sum}} ₽ </span>
-                                        <sub>по {{receipts__count}} пакетам услуг</sub>
-                                        <a href="/profile/receipts?page=1&status=0" class="primary_button">Подробнее</a>
-                                    {% else %}
-                                        <span class="green">0 ₽ </span>
-                                        <sub>Задолженностей нет</sub>
-                                    {% endif %}
-                                </div>
-                                <div>
-                                    <h4>Государству</h4>
-                                    {% if services__summ.summ__sum %}
-                                        <span class="red">{{services__summ.summ__sum}} ₽ </span>
-                                        <sub>по {{services__count}} пакетам квитанций</sub>
-                                        <a href="/profile/services?page=1&status=0" class="primary_button">Подробнее</a>
-                                    {% else %}
-                                        <span class="green">0 ₽ </span>
-                                        <sub>Задолженностей нет</sub>
-                                    {% endif %}
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget my_documents">
-                            <h3>Мои документы</h3>
-                            <div class="document__block">
-                                {% for document in user.document_set.all %}
-                                    <div class="document">
-                                        <iconify-icon icon="material-symbols:document-scanner-outline" style="color: #8b00ff;" width="40" height="40"></iconify-icon>
-                                        <p>{{document.name}}</p>
-                                        <a class="primary_button" target="_blank" href="{{document.file.url}}" download>Скачать</a>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                   </div>
-                </section>
-            </div>
-        </main>
-
-{% endblock content %}
+{% block body_class %}cabinet-page{% endblock %}
+{% block content %}<main><div class="container"><section class="profile">
+<div class="cabinet-heading"><p class="eyebrow">Личный кабинет</p><h1>Здравствуйте, {{user.first_name|default:user.username}}.</h1><p>Обзор начислений и документов вашей организации.</p></div>
+<div class="widgets">
+<div class="widget profile_info"><p class="eyebrow">Ваша организация</p><h3>{{user.organization_type}} {{user.title}}</h3><div class="organization-data"><p>ИНН <strong>{{user.inn|default:'Не указан'}}</strong></p><p>ОГРН <strong>{{user.ogrn|default:'Не указан'}}</strong></p><p>Налогообложение <strong>{{user.tax_system.name|default:'Не указано'}}</strong></p></div></div>
+<div class="widget to_be_payed"><h3>К оплате</h3><div class="to_be_payed__block"><div><h4>Услуги бухгалтера</h4><span>{{services__summ.summ__sum|default:'0'}} <span class="currency">₽</span></span><p>{{services__count}} пакетов услуг</p><a href="/profile/services/?status=0" class="secondary_button">Посмотреть услуги</a></div><div><h4>Квитанции</h4><span>{{receipts__summ.summ__sum|default:'0'}} <span class="currency">₽</span></span><p>{{receipts__count}} пакетов квитанций</p><a href="/profile/receipts/?status=0" class="secondary_button">Посмотреть квитанции</a></div></div></div>
+<div class="widget my_documents"><h3>Документы организации</h3><div class="document__block">{% for document in user.document_set.all %}<div class="document"><img class="document-icon" src="{% static 'icons/document.svg' %}" alt=""><p>{{document.name}}</p><a class="secondary_button" href="{{document.file.url}}" download>Скачать</a></div>{% empty %}<p class="muted">Документы пока не добавлены.</p>{% endfor %}</div></div>
+<div class="widget support-card"><p class="eyebrow">На связи</p><h3>Есть вопрос по начислениям?</h3><p class="muted">Поможем разобраться с услугами и документами.</p><a href="tel:+79204642072">+7 (920) 464-20-72</a><p>8:00–18:00 · пн–сб</p></div>
+</div></section></div></main>{% endblock %}
